@@ -1,16 +1,76 @@
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
+button.ws-hbmenu-toggle {
+  background-color: unset;
+  border: none;
+}
+
+.ws-hbicon-part1, .ws-hbicon-part2, .ws-hbicon-part3 {
+  height: 2px;
+  width: 28px;
+  margin-bottom: 6px;
+  background-color: #000;
+  transition: all 0.15s ease;
+}
+
+.ws-hbicon-part2 {
+  width: 24px;
+}
+
+.ws-hbmenu-spacer {
+  height: 0px;
+  width: 28px;
+}
+
+/* animated 'X' transition effect */
+.ws-hbmenu-toggle[aria-expanded=true] .ws-hbicon-part1 {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.ws-hbmenu-toggle[aria-expanded=true] .ws-hbicon-part2 {
+  transform: scaleX(0);
+}
+
+.ws-hbmenu-toggle[aria-expanded=true] .ws-hbicon-part3 {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Hover effects */
+.ws-hbmenu-toggle:hover .ws-hbicon-part1, .ws-hbmenu-toggle:hover .ws-hbicon-part3 {
+  width: 24px;
+}
+
+.ws-hbmenu-toggle:hover .ws-hbicon-part2 {
+  width: 28px;
+}
+
+/* Dropdown effects */
 .wp-block-willsides-hamburger-dropdown-menu {
-  background-color: #21759b;
-  color: #fff;
-  padding: 2px;
+  position: relative;
+}
+
+.ws-hbmenu-content {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.1s linear;
+  position: absolute;
+  right: 0;
+  margin: 4px 0 0 0 !important;
+  z-index: 2;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  width: -moz-max-content !important;
+  width: max-content !important;
+  min-width: calc(200px - 2rem);
+  background-color: #fff;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.ws-hbmenu-toggle[aria-expanded=true] + .ws-hbmenu-content {
+  visibility: visible;
+  opacity: 1;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

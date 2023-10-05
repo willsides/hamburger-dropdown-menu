@@ -9,11 +9,18 @@
   "description": "A simple animated hamburger dropdown menu",
   "example": {},
   "supports": {
-    "html": false
+    "html": false,
+    "anchor": true,
+    "color": {
+      "background": true,
+      "text": true,
+      "link": true,
+      "gradients": false
+    },
+    "customClassName": true
   },
   "textdomain": "hamburger-dropdown-menu",
   "editorScript": "file:./index.js",
-  "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
   "viewScript": "file:./view.js"
 }

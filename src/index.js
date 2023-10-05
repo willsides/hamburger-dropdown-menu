@@ -5,6 +5,8 @@
  */
 import { registerBlockType } from '@wordpress/blocks';
 
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
+
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * All files containing `style` keyword are bundled together. The code used
@@ -17,8 +19,6 @@ import './style.scss';
 /**
  * Internal dependencies
  */
-import Edit from './edit';
-import save from './save';
 import metadata from './block.json';
 
 /**
@@ -27,13 +27,42 @@ import metadata from './block.json';
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 registerBlockType( metadata.name, {
-	/**
-	 * @see ./edit.js
-	 */
-	edit: Edit,
 
-	/**
-	 * @see ./save.js
-	 */
-	save,
+    edit: () => {
+        const blockProps = useBlockProps();
+		
+		const ALLOWED_BLOCKS = [ 'core/navigation-link', 'core/category', 'core/spacer', 'core/social-links', 'core/search', 'core/social-links' ];
+
+        return (
+            <div { ...blockProps }>
+				<button class="ws-hbmenu-toggle" aria-expanded="false">
+					<div class="ws-hbicon-part1"></div>
+					<div class="ws-hbicon-part2"></div>
+					<div class="ws-hbicon-part3"></div>
+					<div class="ws-hbmenu-spacer"></div>
+				</button>
+				<ul class="ws-hbmenu-content" aria-hidden="true">
+                	<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS }/>
+				</ul>
+            </div>
+        );
+    },
+
+    save: () => {
+        const blockProps = useBlockProps.save();
+
+        return (
+            <div { ...blockProps }>
+				<button class="ws-hbmenu-toggle" aria-expanded="false">
+					<div class="ws-hbicon-part1"></div>
+					<div class="ws-hbicon-part2"></div>
+					<div class="ws-hbicon-part3"></div>
+					<div class="ws-hbmenu-spacer"></div>
+				</button>
+				<ul class="ws-hbmenu-content" aria-hidden="true">
+                	<InnerBlocks.Content class="ws-hbmenu-content" />
+				</ul>
+            </div>
+        );
+    },
 } );
