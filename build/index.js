@@ -15,14 +15,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/block.json");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/block.json");
 
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
+
 
 
 
@@ -45,47 +48,110 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_4__.name, {
-  edit: () => {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_5__.name, {
+  edit: ({
+    attributes,
+    setAttributes
+  }) => {
+    const {
+      backgroundColor,
+      iconColor,
+      style
+    } = attributes;
     const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
+    if (blockProps.className) {
+      blockProps.className = blockProps.className.split(' ').filter(className => {
+        return className !== 'has-background' && !className.match(/has-([\w-]+)-background-color/);
+      }).join(' ');
+    }
+    if (blockProps.style && blockProps.style.backgroundColor) {
+      delete blockProps.style.backgroundColor;
+    }
     const ALLOWED_BLOCKS = ['core/navigation-link', 'core/category', 'core/spacer', 'core/social-links', 'core/search', 'core/social-links'];
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       ...blockProps
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+      title: "Button Color",
+      initialOpen: true
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPicker, {
+      color: iconColor,
+      onChangeComplete: value => setAttributes({
+        iconColor: `rgba(${value.rgb.r}, ${value.rgb.g}, ${value.rgb.b}, ${value.rgb.a})`
+      })
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
       class: "ws-hbmenu-toggle",
-      "aria-expanded": "false"
+      "aria-expanded": "true"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "ws-hbicon-part1"
+      class: "ws-hbicon-part1",
+      style: {
+        backgroundColor: iconColor
+      }
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "ws-hbicon-part2"
+      class: "ws-hbicon-part2",
+      style: {
+        backgroundColor: iconColor
+      }
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "ws-hbicon-part3"
+      class: "ws-hbicon-part3",
+      style: {
+        backgroundColor: iconColor
+      }
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       class: "ws-hbmenu-spacer"
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
-      class: "ws-hbmenu-content",
-      "aria-hidden": "true"
+      class: `ws-hbmenu-content${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`,
+      style: {
+        backgroundColor: style?.color?.background
+      },
+      "aria-hidden": "false"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
       allowedBlocks: ALLOWED_BLOCKS
     })));
   },
-  save: () => {
+  save: ({
+    attributes
+  }) => {
     const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save();
+    const {
+      backgroundColor,
+      style,
+      iconColor
+    } = attributes;
+    if (blockProps.className) {
+      blockProps.className = blockProps.className.split(' ').filter(className => {
+        return className !== 'has-background' && !className.match(/has-([\w-]+)-background-color/);
+      }).join(' ');
+    }
+    if (blockProps.style && blockProps.style.backgroundColor) {
+      delete blockProps.style.backgroundColor;
+    }
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       ...blockProps
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
       class: "ws-hbmenu-toggle",
       "aria-expanded": "false"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "ws-hbicon-part1"
+      class: "ws-hbicon-part1",
+      style: {
+        backgroundColor: iconColor
+      }
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "ws-hbicon-part2"
+      class: "ws-hbicon-part2",
+      style: {
+        backgroundColor: iconColor
+      }
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "ws-hbicon-part3"
+      class: "ws-hbicon-part3",
+      style: {
+        backgroundColor: iconColor
+      }
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       class: "ws-hbmenu-spacer"
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
-      class: "ws-hbmenu-content",
+      class: `ws-hbmenu-content${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`,
+      style: {
+        backgroundColor: style?.color?.background
+      },
       "aria-hidden": "true"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.Content, {
       class: "ws-hbmenu-content"
@@ -127,6 +193,16 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
@@ -143,7 +219,7 @@ module.exports = window["wp"]["element"];
   \************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"willsides/hamburger-dropdown-menu","version":"0.1.0","title":"Animated Hamburger Dropdown Menu","category":"widgets","icon":"menu-alt3","description":"A simple animated hamburger dropdown menu","example":{},"supports":{"html":false,"anchor":true,"color":{"background":true,"text":true,"link":true,"gradients":false},"customClassName":true},"textdomain":"hamburger-dropdown-menu","editorScript":"file:./index.js","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"willsides/hamburger-dropdown-menu","version":"0.1.0","title":"Animated Hamburger Dropdown Menu","category":"widgets","icon":"menu-alt3","description":"A simple animated hamburger dropdown menu","example":{},"supports":{"html":false,"anchor":true,"color":{"background":true,"text":true,"link":true,"gradients":false},"customClassName":true,"align":["left","right","center"]},"attributes":{"align":{"type":"string","default":"center"},"iconColor":{"type":"string","default":"rgba(0, 0, 0, 1)"}},"textdomain":"hamburger-dropdown-menu","editorScript":"file:./index.js","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

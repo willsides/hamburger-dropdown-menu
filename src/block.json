@@ -17,7 +17,18 @@
 			"link": true,
 			"gradients": false
 		},
-		"customClassName": true
+		"customClassName": true,
+		"align": [ "left", "right", "center" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "center"
+		},
+		"iconColor": {
+			"type": "string",
+			"default": "rgba(0, 0, 0, 1)"
+		}
 	},
 	"textdomain": "hamburger-dropdown-menu",
 	"editorScript": "file:./index.js",

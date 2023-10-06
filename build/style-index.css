@@ -9,8 +9,7 @@ button.ws-hbmenu-toggle {
 .ws-hbicon-part1, .ws-hbicon-part2, .ws-hbicon-part3 {
   height: 2px;
   width: 28px;
-  margin-bottom: 6px;
-  background-color: #000;
+  margin: 6px 0px 6px 0px;
   transition: all 0.15s ease;
 }
 
@@ -48,6 +47,9 @@ button.ws-hbmenu-toggle {
 /* Dropdown effects */
 .wp-block-willsides-hamburger-dropdown-menu {
   position: relative;
+  width: -moz-max-content;
+  width: max-content;
+  background-color: unset !important;
 }
 
 .ws-hbmenu-content {
@@ -55,15 +57,12 @@ button.ws-hbmenu-toggle {
   opacity: 0;
   transition: opacity 0.1s linear;
   position: absolute;
-  right: 0;
-  margin: 4px 0 0 0 !important;
+  margin: 0;
   z-index: 2;
-  padding-left: 1rem !important;
-  padding-right: 1rem !important;
+  padding: 0.5rem 1rem !important;
   width: -moz-max-content !important;
   width: max-content !important;
   min-width: calc(200px - 2rem);
-  background-color: #fff;
   color: #000;
   border: 1px solid rgba(0, 0, 0, 0.15);
 }
@@ -71,6 +70,24 @@ button.ws-hbmenu-toggle {
 .ws-hbmenu-toggle[aria-expanded=true] + .ws-hbmenu-content {
   visibility: visible;
   opacity: 1;
+}
+
+.wp-block-willsides-hamburger-dropdown-menu.alignleft .ws-hbmenu-content {
+  left: 0;
+}
+
+.wp-block-willsides-hamburger-dropdown-menu.alignright .ws-hbmenu-content {
+  right: 0;
+}
+
+.wp-block-willsides-hamburger-dropdown-menu.aligncenter .ws-hbmenu-content {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Remove bullet points from list items */
+.ws-hbmenu-content li {
+  display: block;
 }
 
 /*# sourceMappingURL=style-index.css.map*/
