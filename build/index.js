@@ -44,7 +44,7 @@ __webpack_require__.r(__webpack_exports__);
     if (blockProps.style && blockProps.style.backgroundColor) {
       delete blockProps.style.backgroundColor;
     }
-    const ALLOWED_BLOCKS = ['core/navigation-link', 'core/category', 'core/spacer', 'core/social-links', 'core/search', 'core/social-links'];
+    const ALLOWED_BLOCKS = ['core/navigation-link', 'core/category', 'core/spacer', 'core/social-links', 'core/search', 'core/social-links', 'core/loginout'];
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       ...blockProps
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {

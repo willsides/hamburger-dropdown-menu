@@ -25,7 +25,7 @@ registerBlockType( metadata.name, {
 			delete blockProps.style.backgroundColor;
 		}
 
-		const ALLOWED_BLOCKS = [ 'core/navigation-link', 'core/category', 'core/spacer', 'core/social-links', 'core/search', 'core/social-links' ];
+		const ALLOWED_BLOCKS = [ 'core/navigation-link', 'core/category', 'core/spacer', 'core/social-links', 'core/search', 'core/social-links', 'core/loginout' ];
 
         return (
             <div { ...blockProps }>
