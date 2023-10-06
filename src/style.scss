@@ -1,4 +1,4 @@
-button.ws-hbmenu-toggle {
+button.ws-menu-toggle {
 	background-color: unset;
 	border: none;
 }
@@ -18,20 +18,20 @@ button.ws-hbmenu-toggle {
 }
 
 /* animated 'X' transition effect */
-.ws-hbmenu-toggle[aria-expanded=true] .ws-hbicon-part1 {
+.ws-menu-toggle[aria-expanded=true] .ws-hbicon-part1 {
     transform:  translateY(8px) rotate(45deg);
 }
-.ws-hbmenu-toggle[aria-expanded=true] .ws-hbicon-part2 {
+.ws-menu-toggle[aria-expanded=true] .ws-hbicon-part2 {
     transform:  scaleX(0);
 }
-.ws-hbmenu-toggle[aria-expanded=true] .ws-hbicon-part3 {
+.ws-menu-toggle[aria-expanded=true] .ws-hbicon-part3 {
     transform:  translateY(-8px) rotate(-45deg);
 }
 /* Hover effects */
-.ws-hbmenu-toggle:hover .ws-hbicon-part1, .ws-hbmenu-toggle:hover .ws-hbicon-part3 {
+.ws-menu-toggle:hover .ws-hbicon-part1, .ws-menu-toggle:hover .ws-hbicon-part3 {
     width: 24px;
 }
-.ws-hbmenu-toggle:hover .ws-hbicon-part2 {
+.ws-menu-toggle:hover .ws-hbicon-part2 {
     width: 28px;
 }
 
@@ -41,7 +41,7 @@ button.ws-hbmenu-toggle {
 	width: max-content;
 	background-color: unset !important;
 }
-.ws-hbmenu-content {
+.ws-menu-content {
 	visibility: hidden;
 	opacity: 0;
 	transition: opacity .1s linear;
@@ -54,22 +54,22 @@ button.ws-hbmenu-toggle {
 	color: #000;
 	border: 1px solid rgba(0,0,0,.15);
 }
-.ws-hbmenu-toggle[aria-expanded=true]+.ws-hbmenu-content {
+.ws-menu-toggle[aria-expanded=true]+.ws-menu-content {
 	visibility: visible;
 	opacity: 1;
 }
-.wp-block-willsides-hamburger-dropdown-menu.alignleft .ws-hbmenu-content {
+.wp-block-willsides-hamburger-dropdown-menu.alignleft .ws-menu-content {
 	left: 0;
 }
-.wp-block-willsides-hamburger-dropdown-menu.alignright .ws-hbmenu-content {
+.wp-block-willsides-hamburger-dropdown-menu.alignright .ws-menu-content {
 	right: 0;
 }
-.wp-block-willsides-hamburger-dropdown-menu.aligncenter .ws-hbmenu-content {
+.wp-block-willsides-hamburger-dropdown-menu.aligncenter .ws-menu-content {
 	left: 50%;
 	transform: translateX(-50%);
 }
 
 /* Remove bullet points from list items */
-.ws-hbmenu-content li {
+.ws-menu-content li {
 	display: block;
 }

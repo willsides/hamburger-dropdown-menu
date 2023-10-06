@@ -56,7 +56,7 @@ __webpack_require__.r(__webpack_exports__);
         iconColor: `rgba(${value.rgb.r}, ${value.rgb.g}, ${value.rgb.b}, ${value.rgb.a})`
       })
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      class: "ws-hbmenu-toggle",
+      class: "ws-menu-toggle",
       "aria-expanded": "true"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       class: "ws-hbicon-part1",
@@ -76,7 +76,7 @@ __webpack_require__.r(__webpack_exports__);
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       class: "ws-hbmenu-spacer"
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
-      class: `ws-hbmenu-content${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`,
+      class: `ws-menu-content${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`,
       style: {
         backgroundColor: style?.color?.background
       },
@@ -105,7 +105,7 @@ __webpack_require__.r(__webpack_exports__);
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       ...blockProps
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      class: "ws-hbmenu-toggle",
+      class: "ws-menu-toggle",
       "aria-expanded": "false"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       class: "ws-hbicon-part1",
@@ -125,14 +125,12 @@ __webpack_require__.r(__webpack_exports__);
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       class: "ws-hbmenu-spacer"
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
-      class: `ws-hbmenu-content${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`,
+      class: `ws-menu-content${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`,
       style: {
         backgroundColor: style?.color?.background
       },
       "aria-hidden": "true"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.Content, {
-      class: "ws-hbmenu-content"
-    })));
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.Content, null)));
   }
 });
 

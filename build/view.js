@@ -5,33 +5,33 @@ var __webpack_exports__ = {};
   \*********************/
 document.addEventListener("DOMContentLoaded", function () {
   // Adds the toggle function to the menu button
-  const wsHBbuttons = document.querySelectorAll('.ws-hbmenu-toggle');
-  const handleHBmenuClosure = event => {
-    wsHBbuttons.forEach(wsHBbutton => {
-      const hbMenuContent = wsHBbutton.nextElementSibling;
-      if (!hbMenuContent.contains(event.target)) {
-        wsHBbutton.setAttribute('aria-expanded', false);
-        hbMenuContent.setAttribute('aria-hidden', true);
+  const wsMenuToggleButtons = document.querySelectorAll('button.ws-menu-toggle');
+  const wsHandleMenuClosure = event => {
+    wsMenuToggleButtons.forEach(wsMenuToggleButton => {
+      const menuContentWrapper = wsMenuToggleButton.nextElementSibling;
+      if (!menuContentWrapper.contains(event.target)) {
+        wsMenuToggleButton.setAttribute('aria-expanded', false);
+        menuContentWrapper.setAttribute('aria-hidden', true);
       }
     });
   };
-  wsHBbuttons.forEach(wsHBbutton => {
-    const hbMenuContent = wsHBbutton.nextElementSibling;
-    const showHBmenuContents = () => {
-      wsHBbutton.setAttribute('aria-expanded', true);
-      hbMenuContent.setAttribute('aria-hidden', false);
+  wsMenuToggleButtons.forEach(wsMenuToggleButton => {
+    const menuContentWrapper = wsMenuToggleButton.nextElementSibling;
+    const wsShowMenuContentWrappers = () => {
+      wsMenuToggleButton.setAttribute('aria-expanded', true);
+      menuContentWrapper.setAttribute('aria-hidden', false);
     };
-    const hideHBmenuContents = () => {
-      wsHBbutton.setAttribute('aria-expanded', false);
-      hbMenuContent.setAttribute('aria-hidden', true);
+    const wsHideMenuContentWrappers = () => {
+      wsMenuToggleButton.setAttribute('aria-expanded', false);
+      menuContentWrapper.setAttribute('aria-hidden', true);
     };
-    wsHBbutton.addEventListener('click', event => {
+    wsMenuToggleButton.addEventListener('click', event => {
       event.stopPropagation();
-      JSON.parse(wsHBbutton.getAttribute('aria-expanded')) ? hideHBmenuContents() : showHBmenuContents();
+      JSON.parse(wsMenuToggleButton.getAttribute('aria-expanded')) ? wsHideMenuContentWrappers() : wsShowMenuContentWrappers();
     });
   });
-  window.addEventListener('click', handleHBmenuClosure);
-  window.addEventListener('focusin', handleHBmenuClosure);
+  window.addEventListener('click', wsHandleMenuClosure);
+  window.addEventListener('focusin', wsHandleMenuClosure);
 });
 /******/ })()
 ;
