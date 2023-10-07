@@ -5,7 +5,7 @@ var __webpack_exports__ = {};
   \*********************/
 document.addEventListener("DOMContentLoaded", function () {
   // Adds the toggle function to the menu button
-  const wsMenuToggleButtons = document.querySelectorAll('button.ws-menu-toggle');
+  const wsMenuToggleButtons = document.querySelectorAll('.wp-block-willsides-hamburger-dropdown-menu button.ws-menu-toggle');
   const wsHandleMenuClosure = event => {
     wsMenuToggleButtons.forEach(wsMenuToggleButton => {
       const menuContentWrapper = wsMenuToggleButton.nextElementSibling;
@@ -17,17 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   wsMenuToggleButtons.forEach(wsMenuToggleButton => {
     const menuContentWrapper = wsMenuToggleButton.nextElementSibling;
-    const wsShowMenuContentWrappers = () => {
-      wsMenuToggleButton.setAttribute('aria-expanded', true);
-      menuContentWrapper.setAttribute('aria-hidden', false);
-    };
-    const wsHideMenuContentWrappers = () => {
-      wsMenuToggleButton.setAttribute('aria-expanded', false);
-      menuContentWrapper.setAttribute('aria-hidden', true);
-    };
     wsMenuToggleButton.addEventListener('click', event => {
       event.stopPropagation();
-      JSON.parse(wsMenuToggleButton.getAttribute('aria-expanded')) ? wsHideMenuContentWrappers() : wsShowMenuContentWrappers();
+      const isExpanded = JSON.parse(wsMenuToggleButton.getAttribute('aria-expanded'));
+      wsMenuToggleButton.setAttribute('aria-expanded', !isExpanded);
+      menuContentWrapper.setAttribute('aria-hidden', isExpanded);
     });
   });
   window.addEventListener('click', wsHandleMenuClosure);

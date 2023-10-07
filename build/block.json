@@ -17,21 +17,16 @@
       "link": true,
       "gradients": false
     },
-    "customClassName": true,
-    "align": [
-      "left",
-      "right",
-      "center"
-    ]
+    "customClassName": true
   },
   "attributes": {
-    "align": {
-      "type": "string",
-      "default": "center"
-    },
     "iconColor": {
       "type": "string",
       "default": "rgba(0, 0, 0, 1)"
+    },
+    "horAlign": {
+      "type": "string",
+      "default": "right"
     }
   },
   "textdomain": "hamburger-dropdown-menu",

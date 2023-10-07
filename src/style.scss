@@ -59,13 +59,13 @@ button.ws-menu-toggle {
 	visibility: visible;
 	opacity: 1;
 }
-.wp-block-willsides-hamburger-dropdown-menu.alignleft .ws-menu-content {
+.ws-menu-content.ws-menu-align-left {
 	left: 0;
 }
-.wp-block-willsides-hamburger-dropdown-menu.alignright .ws-menu-content {
+.ws-menu-content.ws-menu-align-right {
 	right: 0;
 }
-.wp-block-willsides-hamburger-dropdown-menu.aligncenter .ws-menu-content {
+.ws-menu-content.ws-menu-align-center {
 	left: 50%;
 	transform: translateX(-50%);
 }
@@ -73,4 +73,12 @@ button.ws-menu-toggle {
 /* Remove bullet points from list items */
 .ws-menu-content li {
 	display: block;
+}
+
+.ws-menu-content ul, .ws-menu-content .wp-block-loginout {
+    display: flex;
+	flex-direction: column;
+	align-items: normal;
+    list-style: none;
+    padding-inline: 0;
 }

@@ -1,6 +1,6 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { InnerBlocks, useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ColorPicker } from '@wordpress/components';
+import { PanelBody, ColorPicker, SelectControl } from '@wordpress/components';
 
 import './style.scss';
 
@@ -9,7 +9,7 @@ import metadata from './block.json';
 registerBlockType( metadata.name, {
 
     edit: ({ attributes, setAttributes }) => {
-		const { backgroundColor, iconColor, style } = attributes;
+		const { backgroundColor, iconColor, style, horAlign } = attributes;
 		const blockProps = useBlockProps();
 
 		if (blockProps.className) {
@@ -25,11 +25,23 @@ registerBlockType( metadata.name, {
 			delete blockProps.style.backgroundColor;
 		}
 
-		const ALLOWED_BLOCKS = [ 'core/navigation-link', 'core/category', 'core/spacer', 'core/social-links', 'core/search', 'core/social-links', 'core/loginout' ];
+		const ALLOWED_BLOCKS = [ 'core/categories', 'core/paragraph', 'core/social-link', 'core/navigation', 'core/navigation-submenu', 'core/home-link', 'core/navigation-link', 'core/category', 'core/spacer', 'core/social-links', 'core/search', 'core/loginout' ];
 
         return (
             <div { ...blockProps }>
-				<InspectorControls>
+				<InspectorControls>					
+					<SelectControl
+                            label="Horizontal Menu Alignment"
+                            value={ horAlign }
+                            options={ [
+                                { label: 'Left', value: 'left' },
+                                { label: 'Right', value: 'right' },
+                                { label: 'Center', value: 'center' },
+                            ] }
+                            onChange={ ( newHorAlign ) => {
+                                setAttributes({ horAlign: newHorAlign });
+                            } }
+                        />
 					<PanelBody title="Button Color" initialOpen={ true }>
 						<ColorPicker
 							color={iconColor}
@@ -43,7 +55,7 @@ registerBlockType( metadata.name, {
 					<div class="ws-hbicon-part3" style={{ backgroundColor: iconColor }}></div>
 					<div class="ws-hbmenu-spacer"></div>
 				</button>
-				<ul class={`ws-menu-content${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`}
+				<ul class={`ws-menu-content ws-menu-align-${horAlign}${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`}
 				 style={{ backgroundColor: style?.color?.background }}
 				 aria-hidden="false">
                 	<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS }/>
@@ -54,7 +66,7 @@ registerBlockType( metadata.name, {
 
     save: ({ attributes }) => {
         const blockProps = useBlockProps.save();
-		const { backgroundColor, style, iconColor } = attributes;
+		const { backgroundColor, style, iconColor, horAlign } = attributes;
 
 		if (blockProps.className) {
 			blockProps.className = blockProps.className
@@ -77,7 +89,7 @@ registerBlockType( metadata.name, {
 					<div class="ws-hbicon-part3" style={{ backgroundColor: iconColor }}></div>
 					<div class="ws-hbmenu-spacer"></div>
 				</button>
-				<ul class={`ws-menu-content${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`}
+				<ul class={`ws-menu-content ws-menu-align-${horAlign}${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`}
 				 style={{ backgroundColor: style?.color?.background }}
 				 aria-hidden="true">
                 	<InnerBlocks.Content />
