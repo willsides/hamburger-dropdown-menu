@@ -6,6 +6,11 @@ import './style.scss';
 
 import metadata from './block.json';
 
+const ALLOWED_BLOCKS = [ 'core/categories', 'core/paragraph', 'core/social-link', 'core/navigation', 'core/navigation-submenu', 'core/home-link', 'core/navigation-link', 'core/category', 'core/spacer', 'core/social-links', 'core/search', 'core/loginout' ];
+const TEMPLATE = [
+	[ 'core/navigation', {overlayMenu:"never",layout:{type:"flex",orientation:"vertical"}} ],
+  ];
+
 registerBlockType( metadata.name, {
 
     edit: ({ attributes, setAttributes }) => {
@@ -24,8 +29,6 @@ registerBlockType( metadata.name, {
 		if (blockProps.style && blockProps.style.backgroundColor) {
 			delete blockProps.style.backgroundColor;
 		}
-
-		const ALLOWED_BLOCKS = [ 'core/categories', 'core/paragraph', 'core/social-link', 'core/navigation', 'core/navigation-submenu', 'core/home-link', 'core/navigation-link', 'core/category', 'core/spacer', 'core/social-links', 'core/search', 'core/loginout' ];
 
         return (
             <div { ...blockProps }>
@@ -55,10 +58,13 @@ registerBlockType( metadata.name, {
 					<div class="ws-hbicon-part3" style={{ backgroundColor: iconColor }}></div>
 					<div class="ws-hbmenu-spacer"></div>
 				</button>
-				<ul class={`ws-menu-content ws-menu-align-${horAlign}${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`}
+				<ul class={`ws-menu-content ws-menu-align-${horAlign}${backgroundColor ? ` has-${backgroundColor}-background-color` : ''}`}
 				 style={{ backgroundColor: style?.color?.background }}
 				 aria-hidden="false">
-                	<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS }/>
+                	<InnerBlocks 
+						allowedBlocks={ ALLOWED_BLOCKS }
+						template={ TEMPLATE }
+						/>
 				</ul>
             </div>
         );
@@ -89,7 +95,7 @@ registerBlockType( metadata.name, {
 					<div class="ws-hbicon-part3" style={{ backgroundColor: iconColor }}></div>
 					<div class="ws-hbmenu-spacer"></div>
 				</button>
-				<ul class={`ws-menu-content ws-menu-align-${horAlign}${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`}
+				<ul class={`ws-menu-content ws-menu-align-${horAlign}${backgroundColor ? ` has-${backgroundColor}-background-color` : ''}`}
 				 style={{ backgroundColor: style?.color?.background }}
 				 aria-hidden="true">
                 	<InnerBlocks.Content />

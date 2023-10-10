@@ -25,6 +25,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const ALLOWED_BLOCKS = ['core/categories', 'core/paragraph', 'core/social-link', 'core/navigation', 'core/navigation-submenu', 'core/home-link', 'core/navigation-link', 'core/category', 'core/spacer', 'core/social-links', 'core/search', 'core/loginout'];
+const TEMPLATE = [['core/navigation', {
+  overlayMenu: "never",
+  layout: {
+    type: "flex",
+    orientation: "vertical"
+  }
+}]];
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_5__.name, {
   edit: ({
     attributes,
@@ -45,7 +53,6 @@ __webpack_require__.r(__webpack_exports__);
     if (blockProps.style && blockProps.style.backgroundColor) {
       delete blockProps.style.backgroundColor;
     }
-    const ALLOWED_BLOCKS = ['core/categories', 'core/paragraph', 'core/social-link', 'core/navigation', 'core/navigation-submenu', 'core/home-link', 'core/navigation-link', 'core/category', 'core/spacer', 'core/social-links', 'core/search', 'core/loginout'];
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       ...blockProps
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
@@ -95,13 +102,14 @@ __webpack_require__.r(__webpack_exports__);
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       class: "ws-hbmenu-spacer"
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
-      class: `ws-menu-content ws-menu-align-${horAlign}${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`,
+      class: `ws-menu-content ws-menu-align-${horAlign}${backgroundColor ? ` has-${backgroundColor}-background-color` : ''}`,
       style: {
         backgroundColor: style?.color?.background
       },
       "aria-hidden": "false"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
-      allowedBlocks: ALLOWED_BLOCKS
+      allowedBlocks: ALLOWED_BLOCKS,
+      template: TEMPLATE
     })));
   },
   save: ({
@@ -145,7 +153,7 @@ __webpack_require__.r(__webpack_exports__);
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       class: "ws-hbmenu-spacer"
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
-      class: `ws-menu-content ws-menu-align-${horAlign}${backgroundColor ? ` has-background-color has-${backgroundColor}-background-color` : ''}`,
+      class: `ws-menu-content ws-menu-align-${horAlign}${backgroundColor ? ` has-${backgroundColor}-background-color` : ''}`,
       style: {
         backgroundColor: style?.color?.background
       },
@@ -214,7 +222,7 @@ module.exports = window["wp"]["element"];
   \************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"willsides/hamburger-dropdown-menu","version":"0.1.0","title":"Animated Hamburger Dropdown Menu","category":"widgets","icon":"menu-alt3","description":"A simple animated hamburger dropdown menu","example":{},"supports":{"html":false,"anchor":true,"color":{"background":true,"text":true,"link":true,"gradients":false},"customClassName":true},"attributes":{"iconColor":{"type":"string","default":"rgba(0, 0, 0, 1)"},"horAlign":{"type":"string","default":"right"}},"textdomain":"hamburger-dropdown-menu","editorScript":"file:./index.js","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"willsides/hamburger-dropdown-menu","version":"0.1.0","title":"Animated Hamburger Dropdown Menu","category":"widgets","icon":"menu-alt3","description":"A simple animated hamburger dropdown menu","example":{},"supports":{"html":false,"anchor":true,"color":{"background":true,"text":true,"link":true,"gradients":false},"customClassName":true},"attributes":{"iconColor":{"type":"string","default":"rgba(0, 0, 0, 1)"},"horAlign":{"type":"string","default":"right"},"backgroundColor":{"type":"string","default":"background"}},"textdomain":"hamburger-dropdown-menu","editorScript":"file:./index.js","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
